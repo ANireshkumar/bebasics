@@ -3,11 +3,14 @@ const express = require('express');
 
 // creating the express app
 const app = express();
-//import the logger middleware
-const logger = require('./Middleware/logger');
 
-// use the logger middleware for all routes
-app.use(logger);
+// importing the morgan middleware for logging
+const morgan = require('morgan');
+
+// use morgan middleware for logging
+app.use(morgan('dev'));
+
+
 
 //request handler for the root route
 app.get('/',(req,res)=>{
