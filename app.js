@@ -10,22 +10,12 @@ const morgan = require('morgan');
 // use morgan middleware for logging
 app.use(morgan('dev'));
 
+// impot the test router
+const testRouter = require('./Routes/testRoutes.js');
 
+app.use('/api/v1/test',testRouter);
 
-//request handler for the root route
-app.get('/',(req,res)=>{
-    res.json({message:"Welcome to the Express Server!"});
-});
+// prefex rout /api/v1/test
 
-app.post('/',(req,res)=>{
-    res.json({message:"POST request received!"});
-});
-
-app.put('/',(req,res)=>{
-    res.json({message:"PUT request received!"});
-});
-app.delete('/',(req,res)=>{
-    res.json({message:"DELETE request received!"});
-});
 
 module.exports = app;
