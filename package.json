@@ -14,10 +14,18 @@
   "type": "commonjs",
   "dependencies": {
     "express": "^5.2.1",
-    "mongoose": "^9.2.3",
+    "mongoose": "^9.3.0",
     "morgan": "^1.10.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.14"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ANireshkumar/bebasics.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ANireshkumar/bebasics/issues"
+  },
+  "homepage": "https://github.com/ANireshkumar/bebasics#readme"
 }
