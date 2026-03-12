@@ -5,8 +5,8 @@ const express = require('express');
 const postRouter = express.Router();
 
 
-postRouter.get('/', (req, res) => {
-    res.send('This is the post route');
+postRouter.post('/', (req, res) => {
+console.log(req.body);
 });
 
 module.exports = postRouter;

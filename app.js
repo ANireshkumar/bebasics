@@ -4,6 +4,10 @@ const express = require('express');
 // creating the express app
 const app = express();
 
+//after the schema added
+//parse the request body as json
+app.use(express.json());
+
 // import the post routes
 const postRoutes = require('./Routes/postRoustes.js');
 
