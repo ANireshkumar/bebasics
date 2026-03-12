@@ -1,14 +1,5 @@
-// what is model ?
-// how the post is going to save 
-// we are going to use mongoose to create the post model
-
 // import the mongoose module
 const mongoose = require('mongoose');
-
-// create the postmodel schema and export it
-
-
-module.exports = mongoose.model('Post', postSchema,"posts");
 
 // create the post schema
 const postSchema = new mongoose.Schema({
@@ -24,10 +15,8 @@ const postSchema = new mongoose.Schema({
     },
     updatedAt: {
         type: Date,
-    
     },
-
-    //only this as a spesific mention 
+    // specific mention
     Author: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -37,3 +26,6 @@ const postSchema = new mongoose.Schema({
         ref: 'Comment'
     }],
 });
+
+// export the model AFTER schema creation
+module.exports = mongoose.model('Post', postSchema, "posts");
