@@ -10,9 +10,12 @@
 
     // import the post routes
     const postRoutes = require('./Routes/postRoustes.js');
+    // import the auth routes
+    const authRouter = require('./Routes/authRouter.js');
 
     // use the post routes
     app.use('/posts', postRoutes);
+    app.use('/auth', authRouter);
 
 
     module.exports = app;
