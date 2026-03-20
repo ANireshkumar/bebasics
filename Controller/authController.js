@@ -3,6 +3,9 @@
 const User = require('../Models/user')
 const bcrypt = require('bcrypt');
 
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
 const authController = {
     register: async (req, res) => {
         //logic for registering a user
@@ -31,6 +34,25 @@ const authController = {
     login: async(req, res) => {
         //logic for logging in a user
         try {
+            //get the details of the user from the request body
+            const { email, password } = req.body;
+            //find the user in the database
+            const user = await User.findOne({ email });
+            if (!user) {
+                return res.status(400).json({ message: 'Invalid email or password' });
+            }
+
+            //compare the provided password with the hashed password
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (!isMatch) {
+                return res.status(400).json({ message: 'Invalid email or password' });
+            }
+
+            // Generate a JWT token
+            const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET);
+            //if the password matches, send a success response
+            res.status(200).json({ message: 'Login successful', token });
+
         } catch (error) {
             res.status(500).json({ message: 'Error logging in user', error });
         }
